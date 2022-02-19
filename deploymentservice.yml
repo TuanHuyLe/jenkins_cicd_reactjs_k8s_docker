@@ -6,7 +6,7 @@ metadata:
   labels:
     app: myapp
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: myapp
@@ -18,8 +18,10 @@ spec:
       containers:
       - name: nodeserver
         image: tuanlh/myapp:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
+      restartPolicy: Always
 
 ---
 
@@ -30,7 +32,7 @@ metadata:
 spec:
   selector:
     app: myapp 
-  type: LoadBalancer
+  type: NodePort
   ports:
   - protocol: TCP
     port: 5000
