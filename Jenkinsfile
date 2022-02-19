@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/TuanHuyLe/jenkins_cicd_reactjs_k8s_docker.git'
+        git url: 'https://github.com/TuanHuyLe/jenkins_cicd_reactjs_k8s_docker.git', branch: 'main'
       }
     }
 
