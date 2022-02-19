@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "thetips4you/nodeapp"
+    dockerimagename = "tuanlh/myapp"
     dockerImage = ""
   }
 
@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/shazforiot/nodeapp_test.git'
+        git 'https://github.com/TuanHuyLe/jenkins_cicd_reactjs_k8s_docker.git'
       }
     }
 
@@ -29,7 +29,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+          docker.withRegistry( 'http://localhost:5000', registryCredential ) {
             dockerImage.push("latest")
           }
         }
